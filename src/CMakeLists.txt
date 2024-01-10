@@ -33,20 +33,19 @@ add_subdirectory (asm)
 
 embxx_add_c_cxx_flags ("-march=armv6z")
 
-if (NOT NO_TEST_CPP)
-    add_subdirectory (test_cpp)
-endif ()
-
-
 embxx_add_c_cxx_flags ("-fno-threadsafe-statics")
-
-include_directories (
-    ${EXTERNALS_DIR}/embxx
-    ${CMAKE_CURRENT_SOURCE_DIR})
 
 embxx_disable_exceptions ()
 embxx_disable_rtti ()
 embxx_disable_stdlib ()
+
+if (NOT NO_TEST_CPP)
+    add_subdirectory (test_cpp)
+endif ()
+
+include_directories (
+    ${EXTERNALS_DIR}/embxx
+    ${CMAKE_CURRENT_SOURCE_DIR})
 
 add_subdirectory (device)
 add_subdirectory (stdlib)
